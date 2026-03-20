@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+    <title>User Account</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, Tahoma sans-serif;
+            background: #141414;
+        }
+
+        .top-section {
+            background: #141414;
+            color: #141414;
+        }
+
+        header {
+            background-color: #141414;
+            padding: 0 40px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo-top{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 28px;
+            color: whitesmoke;
+            text-decoration: none;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .login-btn {
+            background: none;
+            border: none;
+            color: whitesmoke;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 8px 16px;
+        }
+
+        .cta-btn {
+            background-color: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-left: 15px;
+        }
+
+        .cta-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .hero {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 40px 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            border-radius: 20px;
+            color: whitesmoke;
+        }
+
+        .hero-text {
+            font-size: 72px;
+            text-align: left;
+            align-self: start;
+            margin-top: 80px;
+        }
+
+        .hero p {
+            font-size: 28px;
+            margin-top: 20px;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 500px;
+            background-image: url('{{ url_for("static", filename="img/userprofile.png") }}');
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center left;
+        }
+
+        .my-courses {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 80px 60px;
+            color: whitesmoke;
+        }
+
+        .my-courses h2{
+            font-size: 41px;
+            margin-bottom: 30px;
+        }
+
+        .user-courses {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+            color: white;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .course-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .no-courses {
+            text-align: center;
+            padding: 40px;
+            font-size: 24px;
+            color: #bbbbbb;
+        }
+
+        .free-courses {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 80px 60px;
+            color: whitesmoke;
+        }
+
+        .free-courses h2{
+            font-size: 41px;
+            margin-bottom: 30px;
+        }
+
+        .course-card-item {
+            position: relative;
+            width: 444px;
+            height: 204px;
+            border-radius: 20px;
+            overflow: hidden;
+            background-color: #292929;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            cursor: pointer;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            color: white;
+        }
+
+        .course-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: left;
+        }
+
+        .course-text h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .course-text p {
+            margin: 0;
+            font-size: 13px;
+            color: #cccccc;
+        }
+
+        .course-image {
+            width: 90px;
+            height: 90px;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-left: 20px;
+        }
+
+        .course-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .course-card-item:hover {
+            transform: scale(1.08);
+        }
+
+        .course-card-item:active {
+            transform: scale(0.95);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            font-weight: 600;
+            color: whitesmoke;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background-color: #2b0485;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: whitesmoke;
+            font-weight: 700;
+            font-size: 21px;
+        }
+
+        footer {
+            border-top: 1px solid #292929;
+            margin-top: 80px;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 40px 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-about h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .footer-about p {
+            font-size: 14px;
+            color: whitesmoke;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .footer-column h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: whitesmoke;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-column a:hover {
+            color: #1a1a1a;
+        }
+
+        .footer-bottom {
+            padding-top: 24px;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copyright {
+            font-size: 13px;
+            color: #999;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            color: #666;
+            text-decoration: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .modal {
+          display: none;
+          justify-content: center;
+          align-items: center;
+          position: fixed;
+          inset: 0;
+          background: rgba(23, 22, 56, 0.65);
+          backdrop-filter: blur(6px);
+          z-index: 9999;
+          animation: fadeIn 0.25s ease;
+        }
+
+        .modal-content {
+          background: #fff;
+          border-radius: 22px;
+          box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+          width: 720px;
+          max-width: 92%;
+          padding: 40px 50px;
+          font-family: 'Outfit', sans-serif;
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+          animation: zoomIn 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+          position: relative;
+        }
+
+        .modal-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid #eee;
+          padding-bottom: 12px;
+        }
+
+        .modal-header h3 {
+          font-size: 26px;
+          font-weight: 700;
+          color: #171638;
+          letter-spacing: 0.3px;
+        }
+
+        .close-btn {
+          background: none;
+          border: none;
+          font-size: 28px;
+          color: #aaa;
+          cursor: pointer;
+          transition: color 0.25s ease;
+        }
+        .close-btn:hover { color: #171638; }
+
+        .modal-body {
+          display: flex;
+          justify-content: space-between;
+          gap: 30px;
+          color: #333;
+          font-size: 16px;
+          line-height: 1.6;
+        }
+
+        .modal-left {
+          flex: 1.4;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+
+        .modal-right {
+          flex: 1;
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+        }
+
+        .modal-right img {
+          width: 100%;
+          max-height: 220px;
+          border-radius: 16px;
+          object-fit: cover;
+          box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+          transition: transform 0.3s ease;
+        }
+        .modal-right img:hover {
+          transform: scale(1.03);
+        }
+
+        .employment-info {
+          font-weight: 600;
+          padding: 8px 14px;
+          border-radius: 10px;
+          display: inline-block;
+          margin-bottom: 18px;
+          font-size: 15px;
+          letter-spacing: 0.2px;
+        }
+        .employment-info:contains("With employment") {
+          background: #e6f8ec;
+          color: #1a7431;
+        }
+        .employment-info:contains("Without employment") {
+          background: #fdf0f0;
+          color: #a33a3a;
+        }
+
+        .description {
+          color: #444;
+          margin-bottom: 24px;
+          font-size: 17px;
+        }
+
+        .meta {
+          display: flex;
+          justify-content: space-between;
+          font-weight: 600;
+          color: #2b0485;
+          margin-top: auto;
+        }
+
+        .meta-item {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .meta-item i {
+          color: #2b0485;
+        }
+
+        .meta-item.price {
+          font-size: 18px;
+        }
+
+        .modal-footer {
+          display: flex;
+          justify-content: flex-end;
+          gap: 14px;
+          border-top: 1px solid #eee;
+          padding-top: 18px;
+        }
+
+        .confirm-btn {
+          background: linear-gradient(135deg, #2b0485, #5c36e0);
+          color: #fff;
+          border: none;
+          padding: 12px 28px;
+          border-radius: 10px;
+          font-size: 15px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        .confirm-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 10px rgba(91, 54, 224, 0.25);
+        }
+
+        .cancel-btn {
+          background: none;
+          border: 1px solid #ccc;
+          padding: 11px 26px;
+          border-radius: 10px;
+          font-size: 15px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        .cancel-btn:hover {
+          background: #f7f7f7;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; } to { opacity: 1; }
+        }
+        @keyframes zoomIn {
+          from { transform: scale(0.94); opacity: 0; }
+          to { transform: scale(1); opacity: 1; }
+        }
+        @keyframes fadeOut {
+          from { opacity: 1; } to { opacity: 0; }
+        }
+
+        .course-card-item {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .course-card-item:hover {
+            transform: scale(1.02);
+        }
+
+        .flash-messages {
+            margin-bottom: 1em;
+        }
+
+        .alert {
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 0.5em;
+            font-weight: 500;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .alert-info {
+            background-color: #cce5ff;
+            color: #004085;
+        }
+
+        .alert-error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-section">
+        <header>
+            <nav>
+                <a href="#" class="logo-top">
+                    EduSkills
+                    <form action="{{ url_for('routes.all_courses') }}" method="get">
+                    <button class="cta-btn">All courses</button>
+                    </form>
+                </a>
+
+                <div class="nav-actions">
+                <form action="{{ url_for('routes.qr') }}" method="get">
+                  <button class="login-btn" type="submit">Qr for 2FA</button>
+                </form>
+
+                <form action="{{ url_for('routes.logout') }}" method="get">
+                  <button class="login-btn" type="submit">Log out</button>
+                </form>
+
+                <form action="{{ url_for('routes.dashboard') }}" method="get">
+                    <button class="cta-btn">Home page</button>
+                </form>
+                </div>
+            </nav>
+        </header>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <div class="flash-messages">
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        <section class="hero">
+            <div class="hero-text">
+                Don't know where to start?
+                <p>Discover something new - for example, free courses</p>
+            </div>
+            <div class="main-image"></div>
+        </section>
+
+        <section class="my-courses" id="my-courses">
+            <h2>My Courses</h2>
+            <div class="courses-grid">
+                {% if purchased_courses %}
+                    {% for course in purchased_courses %}
+                    <div class="course-card-item purchased"
+                         data-course-id="{{ course.id }}"
+                         data-course-name="{{ course.name|escape }}"
+                         data-course-duration="{{ course.duration_months }}"
+                         data-course-price="{{ course.price }}"
+                         data-course-description="{{ course.description|escape }}"
+                         data-course-image="{{ url_for('static', filename='img/' + course.image_filename) }}"
+                    >
+                        <div class="course-text">
+                            <h3>{{ course.name }}</h3>
+                            <p>{{ course.description }}</p>
+                            <p>{{ course.duration_months }} months</p>
+                        </div>
+                        <div class="course-image" style="background-image: url('{{ url_for('static', filename='img/' + course.image_filename) }}');"></div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="no-courses-message">You do not have any courses purchased yet</p>
+            {% endif %}
+        </section>
+
+
+    <section class="free-courses" id="free-courses">
+        <h2>Free Courses</h2>
+        <div class="courses-grid">
+            {% for course in courses_all %}
+            <div class="course-card-item"
+                 data-course-id="{{ course.id }}"
+                 data-course-name="{{ course.name|escape }}"
+                 data-course-duration="{{ course.duration_months }}"
+                 data-course-description="{{ course.description|escape }}"
+                 data-course-price="{{ course.price }}"
+                 data-course-image="{{ url_for('static', filename='img/' + course.image_filename) }}"
+                 data-course-employment="{{ 'With employment' if course.employment else 'Without employment' }}"
+            >
+
+                    <div class="course-text">
+                        <h3>{{ course.name }}</h3>
+                        <p>{{ course.description }}</p>
+                        <p>{{ course.duration_months }} months</p>
+                    </div>
+                    <div class="course-image" style="background-image: url('{{ url_for('static', filename='img/' + course.image_filename) }}');"></div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <div id="courseModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="modalCourseName"></h3>
+          <button class="close-btn" id="modalClose" type="button">&times;</button>
+
+        </div>
+
+        <div class="modal-body">
+          <div class="modal-left">
+            <p class="employment-info" id="modalEmployment"></p>
+            <p class="description" id="modalCourseDescription"></p>
+            <div class="meta">
+              <span><span id="modalCourseDuration"></span> months</span>
+              <span class="price"><span id="modalCoursePrice"></span></span>
+            </div>
+          </div>
+
+          <div class="modal-right">
+            <img id="modalCourseImage" src="" alt="Course image">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+            <div id="footer-enroll">
+                <form id="enrollForm" method="POST" action="{{ url_for('routes.enroll_course') }}">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="course_id" id="courseIdInput">
+                    <button type="submit" class="confirm-btn">Enroll now</button>
+                </form>
+            </div>
+
+            <div id="footer-delete" style="display:none">
+                <form id="deleteForm" method="POST" action="{{ url_for('routes.delete_course') }}">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="course_id" id="courseIdDelete">
+                    <button type="submit" class="confirm-btn">Delete</button>
+                </form>
+            </div>
+
+            <button class="cancel-btn" id="modalCancel" type="button">Cancel</button>
+        </div>
+
+      </div>
+    </div>
+
+        <footer>
+            <div class="footer-container">
+                <div class="footer-grid">
+                    <div class="footer-about">
+                        <div class="logo">
+                            <div class="logo-icon">E</div>
+                            EduSkills
+                        </div>
+                        <p>An online university for modern professions. We teach what you really need on the job.</p>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Courses</h4>
+                        <ul>
+                            <li><a href="#">Programming</a></li>
+                            <li><a href="#">Design</a></li>
+                            <li><a href="#">Marketing</a></li>
+                            <li><a href="#">Management</a></li>
+                            <li><a href="#">Games</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#my-courses">My courses</a></li>
+                            <li><a href="#free-courses">Free courses</a></li>
+                            <li><a href="{{ url_for('routes.all_courses') }}">All courses</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#">Help</a></li>
+                            <li><a href="#">Conditions of use</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p class="copyright">© 2025 EduSkills. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">User Agreement</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+        <script nonce="{{ nonce }}">
+        document.addEventListener("DOMContentLoaded", function () {
+
+            function openModal(courseId, courseName, duration, description, price, image, employment, isPurchased=false) {
+                const modal = document.getElementById('courseModal');
+
+                modal.style.animation = 'none';
+                modal.offsetHeight;
+                modal.style.animation = 'fadeIn 0.25s ease';
+
+                document.getElementById('modalCourseName').textContent = courseName;
+                document.getElementById('modalCourseDuration').textContent = duration;
+                document.getElementById('modalCourseDescription').textContent = description;
+                document.getElementById('modalCoursePrice').textContent = price == 0 ? 'Free' : '$' + price;
+                document.getElementById('modalCourseImage').src = image;
+                document.getElementById('modalEmployment').textContent = employment;
+                document.getElementById('courseIdInput').value = courseId;
+
+                const footer = document.querySelector('.modal-footer');
+
+                if (isPurchased) {
+                    document.getElementById("footer-enroll").style.display = "none";
+                    document.getElementById("footer-delete").style.display = "block";
+                    document.getElementById("courseIdDelete").value = courseId;
+                } else {
+                    document.getElementById("footer-delete").style.display = "none";
+                    document.getElementById("footer-enroll").style.display = "block";
+                    document.getElementById("courseIdInput").value = courseId;
+                }
+
+
+                modal.style.display = 'flex';
+
+                // Привязываем кнопку Cancel после динамической вставки
+                const cancelBtn = document.getElementById("modalCancel");
+                if (cancelBtn) {
+                    cancelBtn.addEventListener("click", () => {
+                        closeModal();
+                    });
+                }
+            }
+
+            function closeModal() {
+                const modal = document.getElementById('courseModal');
+                modal.style.animation = 'fadeOut 0.25s ease forwards';
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    modal.style.animation = '';
+                }, 250);
+            }
+
+            const closeBtn = document.getElementById("modalClose");
+            if (closeBtn) {
+                closeBtn.addEventListener("click", closeModal);
+            }
+
+            window.openModal = openModal;
+            window.closeModal = closeModal;
+
+            document.querySelectorAll('.course-card-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const id = item.dataset.courseId;
+                    const name = item.dataset.courseName;
+                    const duration = item.dataset.courseDuration;
+                    const description = item.dataset.courseDescription;
+                    const price = item.dataset.coursePrice;
+                    const image = item.dataset.courseImage;
+                    const employment = item.dataset.courseEmployment;
+                    const isPurchased = item.classList.contains('purchased');
+
+                    openModal(id, name, duration, description, price, image, employment, isPurchased);
+                });
+            });
+
+        });
+        </script>
+
+
+    <script nonce="{{ nonce }}">
+        console.log("Inline script работает с nonce!");
+    </script>
+
+</body>
+</html>

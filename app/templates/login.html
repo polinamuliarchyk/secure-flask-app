@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:regular,500,600,700%7COutfit:100,200,300,regular,500,600,700,800,900" media="all">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='bad.txt') }}">
+
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Outfit', sans-serif;
+
+      background-image: url('{{ url_for("static", filename="img/ipadblue.png") }}');
+      background-repeat: no-repeat;
+      background-position: bottom left;
+      background-size: 100% auto;
+
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-container {
+      width: 500px;
+      max-width: 90%;
+      padding: 40px;
+      border-radius: 15px;
+
+      background: rgba(255, 255, 255, 0.15);
+
+      border: 2px solid rgba(255, 255, 255, 0.3);
+
+      backdrop-filter: blur(10px);
+
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .form-title {
+      font-size: 48px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+
+    .form-input {
+      font-family: 'Outfit', sans-serif;
+      width: 400px;
+      max-width: 100%;
+      background: rgba(255, 255, 240, 0.45);
+      border: none;
+      border-radius: 9px;
+      height: 50px;
+      padding: 0 20px;
+      font-size: 18px;
+      margin-bottom: 20px;
+      outline: none;
+      transition: box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    .form-input:focus {
+      box-shadow: 0 0 0 2px white;
+      background: rgba(255, 255, 255, 0.55);
+      color: #080c44;
+    }
+
+    .password-wrapper {
+      position: relative;
+      width: 400px;
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .password-wrapper .form-input {
+      margin-bottom: 0;
+      padding-right: 45px;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #080c44;
+      font-size: 20px;
+      transition: opacity 0.2s ease;
+    }
+
+    .toggle-password:hover {
+      opacity: 0.7;
+    }
+
+    .submit-button {
+      font-family: 'Outfit', sans-serif;
+      background: #080c44;
+      border: none;
+      border-radius: 9px;
+      height: 50px;
+      width: 100%;
+      font-size: 22px;
+      color: white;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.2s ease;
+    }
+
+    .submit-button:hover {
+      background: #09105f;
+    }
+
+    .submit-button:active {
+      background: #1039b1;
+    }
+
+    .link {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .link a {
+      font-size: 18px;
+      color: whitesmoke;
+      text-decoration: none;
+      transition: text-decoration 0.2s ease, color 0.2s ease;
+    }
+
+    .link a:hover {
+      text-decoration: underline;
+      color: #ffffff;
+    }
+
+    .message {
+      background: rgba(9, 16, 95, 0.75);
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 9px;
+      font-size: 18px;
+      text-align: center;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+    <div class="form-container">
+      <div class="form-title">Sign in</div>
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+            <div class="message">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.username(class_="form-input", placeholder="Username") }}
+
+        <div class="password-wrapper">
+          {{ form.password(class_="form-input", placeholder="Password", id="password", autocomplete="new-password") }}
+          <i class="fa-solid fa-eye-slash toggle-password" id="togglePassword"></i>
+        </div>
+
+        {{ form.submit(class_="submit-button", value="Sign in") }}
+      </form>
+
+      <div class="link">
+        <a href="{{ url_for('routes.register') }}">No account? Sign up</a>
+      </div>
+    </div>
+
+    <script nonce="{{ nonce }}">
+      const togglePassword = document.getElementById('togglePassword');
+      const passwordInput = document.getElementById('password');
+
+      togglePassword.addEventListener('click', function() {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+
+        this.classList.toggle('fa-eye');
+        this.classList.toggle('fa-eye-slash');
+      });
+    </script>
+
+  <script src="/static/test.txt"></script>
+
+</body>
+</html>

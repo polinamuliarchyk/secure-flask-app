@@ -1,0 +1,1 @@
+console.log("This SHOULD NOT run — wrong MIME type!");

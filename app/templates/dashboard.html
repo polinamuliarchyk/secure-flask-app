@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.cdnfonts.com/css/kalnia" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:regular,500,600,700%7COutfit:100,200,300,regular,500,600,700,800,900" media="all">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>EduSkills</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, Tahoma sans-serif;
+        }
+
+        .top-section {
+            background: white;
+            color: white;
+        }
+
+        header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 0 40px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo,
+        .logo-top{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            font-weight: 600;
+            color: whitesmoke;
+            text-decoration: none;
+        }
+
+        .logo-icon,
+        .logo-icon-top{
+            width: 32px;
+            height: 32px;
+            background-color: #2b0485;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: whitesmoke;
+            font-weight: 700;
+            font-size: 21px;
+        }
+
+        .logo-top {
+            color: black;
+        }
+
+        .logo-icon-top {
+            background-color: black;
+            color: whitesmoke;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #000000;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #6c6969;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .login-btn {
+            background: none;
+            border: none;
+            color: #1a1a1a;
+            font-size: 15px;
+            cursor: pointer;
+            padding: 8px 16px;
+        }
+
+        .login-btn:hover {
+            color: #6c6969;
+        }
+
+        .cta-btn {
+            background-color: #171638;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .cta-btn:hover {
+            background-color: #2b0485;
+        }
+
+        .hero {
+            max-width: 1800px;
+            background-color: rgba(2, 0, 131, 0.75);
+            margin: 0 auto;
+            padding: 80px 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 120px;
+            align-items: center;
+            border-radius: 20px;
+
+        }
+
+        .hero-content h1 {
+            font-family: 'Picky Retro', sans-serif;
+            font-size: 56px;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            color: rgba(0, 0, 0, 0.68);
+        }
+
+        .hero-content p {
+            font-size: 21px;
+            color: rgba(0, 0, 0, 0.76);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .primary-btn {
+            background-color: rgba(0, 0, 0, 0.65);
+            color: white;
+            border: none;
+            padding: 22px 45px;
+            border-radius: 32px;
+            font-size: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .primary-btn:hover {
+            background-color: #2b0385;
+        }
+
+        .secondary-btn {
+            background-color: rgba(255, 255, 255, 0.75);
+            color: #1a1a1a;
+            border: 1px solid #e0e0e0;
+            padding: 22px 40px;
+            border-radius: 32px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background-color 0.2s;
+        }
+
+
+        .primary-btn, .secondary-btn {
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .primary-btn:hover, .secondary-btn:hover {
+            transform: scale(1.08);
+        }
+
+        .primary-btn:active, .secondary-btn:active {
+            transform: scale(0.95);
+        }
+
+
+        .secondary-btn:hover {
+            background-color: #ffffff;
+        }
+
+        .stats {
+            display: flex;
+            gap: 80px;
+        }
+
+        .stat-item h3 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .stat-item p {
+            font-size: 15px;
+            color: #ffffff;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 600px;
+            background-image: url('{{ url_for("static", filename="img/comp.png") }}');
+            background-repeat: no-repeat;
+            overflow: visible;
+            position: relative;
+            background-size: cover;
+            background-position: center right;
+            transform: scale(1.2);
+            transform-origin: center;
+        }
+
+
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .hero-content h1 {
+                font-size: 42px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .stats {
+                gap: 40px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .primary-btn, .secondary-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        .popular-courses {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .popular-courses h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .popular-courses .subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 60px;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            justify-items: center;
+        }
+
+        .course-card-item {
+            position: relative;
+            width: 404px;
+            height: 404px;
+            border-radius: 20px;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .course-card-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .course-content {
+            position: relative;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .course-content::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            background: rgba(0, 0, 0, 0.2);
+            -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 90%);
+            mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 90%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .course-content > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .course-title {
+            font-size: 28px !important;
+            margin: 0;
+            text-align: left;
+            transform: translateY(35px);
+            color: #cccccc;
+            transition: transform 0.4s ease, font-size 0.4s ease;
+        }
+
+        .course-card-item:hover .course-title {
+            font-size: 32px !important;
+            transform: translateY(10px);
+            color: white;
+        }
+
+        .course-description,
+        .course-meta {
+            opacity: 0;
+            max-height: 0;
+            margin: 0;
+            overflow: hidden;
+            transition: opacity 0.5s ease, max-height 0.5s ease, margin-top 0.5s ease;
+        }
+
+        .course-card-item:hover .course-description,
+        .course-card-item:hover .course-meta {
+            opacity: 2;
+            transform: translateY(20px);
+            max-height: 200px;
+            margin-top: 3px;
+            text-align: left;
+        }
+
+        .course-card-item:hover .course-description {
+            color: #cccccc;
+        }
+
+        .course-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 14px;
+        }
+
+        .hot-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: #ee3e07;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .course-content {
+            padding: 24px;
+
+        }
+
+        .course-content h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .course-content p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .month {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .popular-courses {
+            font-size: 26px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .view-all-btn {
+            background-color: #1a1a1a;
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .view-all-btn:hover {
+            background-color: #333;
+        }
+
+        .why-eduskils {
+            background-color: white;
+            padding: 80px 0;
+        }
+
+       .why-eduskills-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .card-container {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 20px;
+        }
+
+        .card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 1200px;
+            width: 1320px;
+            background: #f1f1f1;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card p{
+            position: absolute;
+            font-size: 50px;
+            font-weight: bold;
+            margin-top: 50px;
+        }
+
+        .card-work {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 500px;
+            width: 1150px;
+            background: #ffffff;
+            background-size: cover;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 180px;
+        }
+
+        .card-work h3 {
+            font-size: 40px;
+            font-weight: bold;
+            margin-left: 70px;
+            margin-top: 120px;
+        }
+
+         .card-work p {
+            font-size: 20px;
+            font-weight: normal;
+            margin-left: 70px;
+            margin-top: 250px;
+        }
+
+         .card-work img {
+            margin-right: 50px;
+            transform: scale(1.1);
+        }
+
+         .schedule-row {
+              display: flex;
+              justify-content: flex-start;
+              gap: 20px;
+              width: 100%;
+            }
+
+        .card-schedule,
+        .card-access,
+        .card-quality {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 400px;
+            width: 370px;
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 15px;
+         }
+
+        .card-quality{
+            background: black;
+        }
+
+        .card-schedule img,
+        .card-access img,
+        .card-quality img {
+          width: 100%;
+          max-height: 85%;
+          object-fit: cover;
+          border-radius: 15px;
+          transform: scale(0.8);
+          transform-origin: center top;
+        }
+
+        .card-schedule h3,
+        .card-access h3,
+        .card-quality h3 {
+           font-size: 24px;
+           text-align: center;
+           color: #333;
+           max-width: 100%;
+           margin-top: -40px;
+        }
+
+        .card-quality h3{
+            color: whitesmoke;
+        }
+
+        .card-schedule p,
+        .card-access p,
+        .card-quality p {
+          font-size: 16px;
+          text-align: center;
+          margin-top: 280px;
+          color: #333;
+          line-height: 1.4;
+          max-width: 90%;
+          font-weight: normal;
+        }
+
+        .card-quality p{
+            color: whitesmoke;
+        }
+
+        .stat-box h3 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .stat-box p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .background-form {
+          display: flex;
+          min-height: 50vh;
+          background-color: #f1f1f1;
+        }
+
+        .container {
+          flex: 0 1 1200px;
+          margin: auto;
+          padding: 10px;
+        }
+
+        .screen {
+          position: relative;
+          background: white;
+          border-radius: 15px;
+        }
+
+        .screen::after {
+          content: "";
+          position: absolute;
+          bottom: 50px;
+          left: 50px;
+          width: 150px;
+          height: 150px;
+          background-image: url('{{ url_for('static', filename='img/Chat.png') }}');
+          background-size: contain;
+          background-repeat: no-repeat;
+          pointer-events: none;
+        }
+
+        .screen p {
+            font-size: 16px;
+             margin-top: 20px;
+        }
+
+
+        .screen-body {
+          display: flex;
+        }
+
+        .screen-body-item {
+          flex: 1;
+          padding: 50px;
+        }
+
+        .screen-body-item.left {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .app-title {
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          color: black;
+          font-size: 36px;
+          font-weight: bold;
+        }
+
+        .app-form-group {
+          margin-bottom: 15px;
+        }
+
+        .app-form-group.message {
+          margin-top: 40px;
+        }
+
+        .app-form-group.buttons {
+          margin-bottom: 0;
+          text-align: right;
+        }
+
+        .app-form-control {
+          font-family: 'Outfit', sans-serif;
+          width: 500px;
+          max-width: 100%;
+          background: #f5f5f5;
+          border: 1px solid #eaeaea;
+          border-radius: 9px;
+          height: 55px;
+          padding: 0 20px;
+          font-size: 16px;
+          margin-bottom: 5px;
+          outline: none;
+          transition: box-shadow 0.3s ease, background 0.3s ease;
+        }
+
+        .app-form-control::placeholder {
+          color: #737373;
+        }
+
+        .app-form-control:focus {
+          border-bottom-color: #ddd;
+        }
+
+        .app-form-button {
+          font-family: 'Outfit', sans-serif;
+          background: #3d3bff;
+          border: none;
+          border-radius: 9px;
+          height: 50px;
+          width: 100%;
+          font-size: 22px;
+          color: white;
+          cursor: pointer;
+          margin-top: 10px;
+          transition: background 0.2s ease;
+        }
+
+        .app-form-button:hover {
+          background: #6e6dff;
+        }
+
+        @media screen and (max-width: 520px) {
+          .screen-body {
+            flex-direction: column;
+          }
+
+          .screen-body-item.left {
+            margin-bottom: 30px;
+          }
+
+          .app-title {
+            flex-direction: row;
+          }
+
+          .app-title span {
+            margin-right: 12px;
+          }
+
+          .app-title:after {
+            display: none;
+          }
+        }
+
+        @media screen and (max-width: 600px) {
+          .screen-body {
+            padding: 40px;
+          }
+
+          .screen-body-item {
+            padding: 0;
+          }
+        }
+
+        footer {
+            background-color: #292929;
+            border-top: 1px solid #292929;
+            margin-top: 80px;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 40px 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-about h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .footer-about p {
+            font-size: 14px;
+            color: whitesmoke;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .footer-column h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: whitesmoke;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-column a:hover {
+            color: #ffffff;
+        }
+
+        .footer-bottom {
+            padding-top: 24px;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copyright {
+            font-size: 13px;
+            color: #999;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            color: #666;
+            text-decoration: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @media (max-width: 768px) {
+            .popular-courses h2,
+            .why-content h2 {
+                font-size: 36px;
+            }
+
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+
+    </style>
+</head>
+{% if not request.cookies.get('cookie_consent') %}
+<div id="cookie-banner" style="
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 600px;
+    background: rgba(0,0,0,0.85);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    z-index: 9999;
+    font-size: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+">
+    <div style="margin-bottom: 10px;">
+        We use cookies to authorise and improve the functioning of the website.
+By continuing to use the website, you agree to this.
+    </div>
+
+    <button id="cookie-accept-btn"
+            style="background: #007bfc; color: white; padding: 8px 16px;
+                   border: none; border-radius: 6px; cursor: pointer;">
+        Agree
+    </button>
+</div>
+
+<script nonce="{{ nonce }}">
+document.getElementById("cookie-accept-btn").onclick = function () {
+    fetch("/accept_cookie")
+        .then(() => {
+            document.getElementById("cookie-banner").style.display = "none";
+        });
+};
+</script>
+{% endif %}
+
+<body>
+<div class="top-section">
+    <header>
+        <nav>
+            <a href="#" class="logo-top">
+                <div class="logo-icon-top">E</div>
+                EduSkills
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#about-us">About us</a></li>
+                <li><a href="#popular-courses">Popular courses</a></li>
+                <li><a href="{{ url_for('routes.all_courses') }}">All courses</a></li>
+                <li><a href="#contact-us">Contact us</a></li>
+            </ul>
+
+            <div class="nav-actions">
+              {% if not user %}
+
+                <form action="{{ url_for('routes.login') }}" method="get">
+                  <button class="login-btn" type="submit">Sign in</button>
+                </form>
+                <form action="{{ url_for('routes.register') }}" method="get">
+                  <button class="cta-btn">Start learning</button>
+                </form>
+              {% else %}
+
+                {% if role.lower() == 'admin' %}
+                   <form action="{{ url_for('routes.logout') }}" method="get">
+                      <button class="login-btn" type="submit">Log out</button>
+                    </form>
+
+                  <form action="{{ url_for('routes.admin_dashboard') }}" method="get">
+                    <button class="cta-btn">Admin panel</button>
+                  </form>
+                {% elif role.lower() == 'teacher' %}
+                    <form action="{{ url_for('routes.logout') }}" method="get">
+                      <button class="login-btn" type="submit">Log out</button>
+                    </form>
+
+                  <form action="{{ url_for('routes.teacher_account') }}" method="get">
+                    <button class="cta-btn">My courses</button>
+                  </form>
+                {% else %}
+                    <form action="{{ url_for('routes.logout') }}" method="get">
+                      <button class="login-btn" type="submit">Log out</button>
+                    </form>
+
+                  <form action="{{ url_for('routes.user_account') }}" method="get">
+                    <button class="cta-btn">My account</button>
+                  </form>
+                {% endif %}
+              {% endif %}
+            </div>
+
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Learn programming from the best</h1>
+                <p>Online courses on in-demand IT specialities<br>from leading market experts</p>
+
+                <div class="hero-buttons">
+                  <form action="/all_courses" method="get">
+                    <button class="primary-btn">Choice course</button>
+                  </form>
+
+                  {% if not user %}
+                    <form action="/register" method="get">
+                      <button class="secondary-btn">Join us</button>
+                    </form>
+                  {% endif %}
+                </div>
+
+                <div class="stats">
+                    <div class="stat-item">
+                        <h3>500+</h3>
+                        <p>Courses</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>1M+</h3>
+                        <p>Students</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>95%</h3>
+                        <p>Employment</p>
+                    </div>
+                </div>
+            </div>
+                <div class="main-image"></div>
+        </section>
+         </main>
+    </div>
+
+
+        <section class="popular-courses" id="popular-courses">
+            <h2>Popular courses</h2>
+            <p class="subtitle">Choose your dream profession and start your career in IT today</p>
+
+            <div class="courses-grid">
+                <div class="course-card-item" style="background-image: url('{{ url_for('static', filename='img/pythonmain.png') }}');">
+                    <span class="hot-badge">HOT</span>
+                    <div class="course-content">
+                        <h3 class="course-title">Python developer</h3>
+                        <div class="course-meta">
+                            <div class="month">12 months • with employment</div>
+                        </div>
+                        <p class="course-description">You will learn the most popular programming language, in which websites,
+                            applications, games and chatbots are written</p>
+                    </div>
+                </div>
+
+                <div class="course-card-item" style="background-image: url('{{ url_for('static', filename='img/design.png') }}');">
+                    <span class="hot-badge">HOT</span>
+                    <div class="course-content">
+                        <h3 class="course-title">UX/UI Designer</h3>
+                        <div class="course-meta">
+                            <div class="month">8 months • with employment</div>
+                        </div>
+                        <p class="course-description">You will learn how to create brand identity and master popular
+                            graphic editors - from Illustrator to Figma</p>
+                    </div>
+                </div>
+
+
+                <div class="course-card-item" style="background-image: url('{{ url_for('static', filename='img/front.png') }}');">
+                    <span class="hot-badge">HOT</span>
+                    <div class="course-content">
+                        <h3 class="course-title">Frontend developer</h3>
+                        <div class="course-meta">
+                            <div class="month">9 months • with employment</div>
+                        </div>
+                        <p class="course-description">You will master the development of the visual part of websites and web applications</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="view-all-btn">Show all courses</button>
+        </section>
+
+
+         <section class="why-eduskils" id="about-us" >
+            <div class="why-eduskills-container">
+                <div class="card">
+                    <p>Creating support along the way</p>
+                    <div class="card-container">
+                    <div class="card-work">
+                        <h3>Helping you find<br>your dream job</h3>
+                        <p>We will teach you how to interview<br>and together we will create an attractive CV<br>and portfolio. We will find interesting vacancies<br>and recommend you to partner companies.</p>
+                        <img src="static/img/work.png" alt="image">
+                    </div>
+                        <div class="schedule-row">
+                            <div class="card-schedule">
+                                <img src="static/img/keyboard.png" alt="image">
+                                <h3>Flexible schedule<br>without deadlines</h3>
+                                <p>Training is easy to combine<br>with work and personal life</p>
+                            </div>
+                            <div class="card-access">
+                                <img src="static/img/access.png" alt="image">
+                                <h3>Indefinite access<br>to the course and updates</h3>
+                                <p>You can go back to class<br>and refresh your knowledge at any time</p>
+                            </div>
+                            <div class="card-quality">
+                                <img src="static/img/quality.png" alt="image">
+                                <h3>Guaranteed<br>quality standards</h3>
+                                <p>Content verified by industry professionals<br>Step‑by‑step mastery of essential skills</p>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+            </div>
+        </section>
+
+
+    <div class="background-form" id="contact-us">
+      <div class="container">
+        <div class="screen">
+          <div class="screen-body">
+            <div class="screen-body-item left">
+              <div class="app-title">
+                <span>Contact us</span>
+              </div>
+                <p>If you would like to know more about EduSkills or are unsure which training programme to choose, leave a request and we'll call you back</p>
+            </div>
+            <div class="screen-body-item">
+              <div class="app-form">
+                <div class="app-form-group">
+                  <input class="app-form-control" placeholder="Name">
+                </div>
+                <div class="app-form-group">
+                  <input class="app-form-control" placeholder="Email">
+                </div>
+                <div class="app-form-group">
+                  <input class="app-form-control" placeholder="Phone">
+                </div>
+                  <button class="app-form-button">Send</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="logo">
+                        <div class="logo-icon">E</div>
+                        EduSkills
+                    </div>
+                    <p>An online university for modern professions. We teach what you really need on the job.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Courses</h4>
+                    <ul>
+                        <li><a href="#">Programming</a></li>
+                        <li><a href="#">Design</a></li>
+                        <li><a href="#">Marketing</a></li>
+                        <li><a href="#">Management</a></li>
+                        <li><a href="#">Games</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about-us">About us</a></li>
+                        <li><a href="#popular-courses">Popular courses</a></li>
+                        <li><a href="{{ url_for('routes.all_courses') }}">All courses</a></li>
+                        <li><a href="#contact-us">Contact us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Conditions of use</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 EduSkills. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">User Agreement</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<script nonce="{{ nonce }}">
+    const viewAllBtn = document.querySelector('.view-all-btn');
+    const coursesGrid = document.querySelector('.courses-grid');
+
+    const moreCourses = [
+        {
+            title: "Game developer",
+            desc: "You will become a creator and director of cool game projects. Learn to come up with interesting plots, realistic worlds and exciting gameplay",
+            rating: "6 months • with employment",
+            image: '{{ url_for("static", filename="img/gamedev.png") }}'
+        },
+        {
+            title: "Java developer",
+            desc: "You will learn how to program in a popular language and build web applications on the Spring framework. Build a portfolio and gain experience in team development",
+            rating: "10 months • with employment",
+            image: '{{ url_for("static", filename="img/java.png") }}'
+        },
+        {
+            title: "Data Scientist",
+            desc: "You will try your hand at data analytics and machine learning. Choose an area that interests you and master it to PRO level",
+            rating: "8 months • with employment",
+            image: '{{ url_for("static", filename="img/datasceince.png") }}'
+        },
+        {
+            title: "Test Engineer",
+            desc: "You will learn how to find bugs in websites and applications using Java, JavaScript, or Python. Gain real-world testing experience",
+            rating: "10 months • with employment",
+            image: '{{ url_for("static", filename="img/test.png") }}'
+        },
+        {
+            title: "Project manager",
+            desc: "You will learn how to lead a team and manage projects of any scale. Choose an interesting field and expand your skills to an advanced level",
+            rating: "6 months • with employment",
+            image: '{{ url_for("static", filename="img/manager.png") }}'
+        },
+        {
+            title: "Neural networks: a practical course",
+            desc: "You will learn about the top 7 neural networks and how to use them in your work. You will be able to increase your efficiency and boost your income",
+            rating: "3 months",
+            image: '{{ url_for("static", filename="img/networks.png") }}'
+        },
+        {
+            title: "Cybersecurity",
+            desc: "You will learn how to identify vulnerabilities and ensure the security of IT systems. You will master a profession that is in growing demand around the world",
+            rating: "12 months • with employment",
+            image: '{{ url_for("static", filename="img/cybersecurity.png") }}'
+        },
+        {
+            title: "Web designer",
+            desc: "You will learn how to create user-friendly websites and applications, work with animation, and present projects to clients",
+            rating: "12 months • with employment",
+            image:  '{{ url_for("static", filename="img/webdesign.png") }}'
+        },
+        {
+            title: "Unity developer",
+            desc: " You will master game development, learn to write code in C# and create games in Unity. You will make 6+ games in different genres",
+            rating: "10 months • with employment",
+            image:  '{{ url_for("static", filename="img/unity.png") }}'
+        }
+
+    ];
+
+    let coursesAdded = false;
+    let addedCourseElements = [];
+
+    viewAllBtn.addEventListener('click', () => {
+        if (!coursesAdded) {
+            moreCourses.forEach(course => {
+                const card = document.createElement('div');
+                card.classList.add('course-card-item');
+
+
+                card.innerHTML = `
+                    <div class="course-card-item" style="background-image: url('${course.image}');">
+                    <div class="course-content">
+                        <h3 class="course-title">${course.title}</h3>
+                        <div class="course-meta">
+                            <div class="month"> ${course.rating} </div>
+                            </div>
+                        <p class="course-description">${course.desc}</p>
+                    </div>
+                `;
+
+                coursesGrid.appendChild(card);
+                addedCourseElements.push(card);
+            });
+
+            viewAllBtn.textContent = "Hide courses";
+            coursesAdded = true;
+        } else {
+            addedCourseElements.forEach(card => coursesGrid.removeChild(card));
+            addedCourseElements = [];
+            viewAllBtn.textContent = "Show all courses";
+            coursesAdded = false;
+        }
+    });
+</script>
+
+<script nonce="{{ nonce }}">
+    console.log("Inline script работает с nonce!");
+</script>
+
+</body>
+</html>

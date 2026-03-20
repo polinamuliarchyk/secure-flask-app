@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Confirmation Method</title>
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:regular,500,600,700%7COutfit:100,200,300,regular,500,600,700,800,900" media="all">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Outfit', sans-serif;
+
+      background-image: url('{{ url_for("static", filename="img/ipadblue.png") }}');
+      background-repeat: no-repeat;
+      background-position: bottom left;
+      background-size: 100% auto;
+
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-container {
+      width: 600px;
+      max-width: 90%;
+      padding: 40px;
+      border-radius: 15px;
+
+      background: rgba(255, 255, 255, 0.15);
+
+      border: 2px solid rgba(255, 255, 255, 0.3);
+
+      backdrop-filter: blur(10px);
+
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+
+      color: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-title {
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .radio-group {
+      margin-bottom: 30px;
+    }
+
+    .radio-option {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.55);
+      padding: 15px 20px;
+      border-radius: 9px;
+      margin-bottom: 15px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      color: #080c44;
+      font-weight: bold;
+    }
+
+    .radio-option input[type="radio"] {
+      margin-right: 15px;
+      transform: scale(1.3);
+      cursor: pointer;
+    }
+
+    .radio-option:hover {
+      background: #c3d9f3;
+    }
+
+    .submit-button {
+      font-family: 'Outfit', sans-serif;
+      background: #080c44;
+      border: none;
+      border-radius: 9px;
+      height: 55px;
+      width: 100%;
+      font-size: 22px;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <div class="form-title">
+      Select how you want to confirm your login, {{ user.username }}
+    </div>
+    <form method="POST">
+      {{ form.hidden_tag() }}
+
+      <div class="radio-group">
+        {% for subfield in form.mfa_method %}
+          <label class="radio-option">
+            {{ subfield }}
+            {{ subfield.label.text }}
+          </label>
+        {% endfor %}
+      </div>
+
+      {{ form.submit(class="submit-button", value="Continue") }}
+    </form>
+  </div>
+</body>
+</html>

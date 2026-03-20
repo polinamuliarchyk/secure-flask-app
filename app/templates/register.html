@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Create Account</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:regular,500,600,700%7COutfit:100,200,300,regular,500,600,700,800,900" media="all">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Outfit', sans-serif;
+      background-image: url('{{ url_for("static", filename="img/ipadblue.png") }}');
+      background-repeat: no-repeat;
+      background-position: bottom left;
+      background-size: 100% auto;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-container {
+      width: 1200px;
+      height: 800px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+      color: white;
+      display: flex;
+      overflow: hidden;
+    }
+
+    .left-side {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      text-align: center;
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+    }
+
+    .left-side-content {
+      position: relative;
+      z-index: 1;
+      color: rgba(255, 255, 255, 0.92);
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+      opacity: 0;
+      transform: translateY(15px);
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    .left-side h1 {
+      font-size: 46px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      letter-spacing: -0.5px;
+    }
+
+    .left-side p {
+      font-size: 19px;
+      font-weight: 300;
+      opacity: 0.8;
+      max-width: 320px;
+      line-height: 1.5;
+      margin: 0 auto;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .right-side {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .create-account-title {
+      font-weight: bold;
+      font-size: 45px;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .form-wrapper {
+      width: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .form-group {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .password-group {
+      position: relative;
+    }
+
+    .form-input {
+      font-family: 'Outfit', sans-serif;
+      background: rgba(255, 255, 255, 0.4);
+      border: none;
+      border-radius: 9px;
+      height: 55px;
+      width: 400px;
+      color: #080c44;
+      padding: 0 50px 0 18px;
+      font-size: 19px;
+      outline: none;
+      display: block;
+      margin: 0 auto;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-input:focus {
+      background: rgba(255, 255, 255, 0.55);
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8);
+    }
+
+    .submit-button {
+      font-family: 'Outfit', sans-serif;
+      background: #080c44;
+      border: none;
+      border-radius: 9px;
+      height: 60px;
+      width: 400px;
+      font-size: 21px;
+      color: white;
+      cursor: pointer;
+      margin: 12px auto 0;
+      display: block;
+      transition: background 0.3s ease;
+    }
+
+    .submit-button:hover {
+      background: #09105f;
+    }
+
+    .login-link {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .login-link a {
+      font-size: 16px;
+      color: whitesmoke;
+      text-decoration: none;
+    }
+
+    .login-link a:hover {
+      text-decoration: underline;
+    }
+
+    .message {
+      background: rgba(9, 16, 95, 0.75);
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 9px;
+      font-size: 18px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #080c44;
+      font-size: 20px;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .toggle-password:hover {
+      opacity: 0.7;
+      transform: translateY(-50%) scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <div class="left-side">
+      <div class="left-side-content">
+        <h1>Let’s get started</h1>
+        <p>Create your account and begin your journey with us today.</p>
+      </div>
+    </div>
+
+    <div class="right-side">
+      <div class="form-wrapper">
+
+        <form method="POST" action="{{ url_for('routes.register') }}">
+            {{ form.hidden_tag() }}
+            <div class="create-account-title">Sign up</div>
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                  <div class="message">{{ message }}</div>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+
+            {% for error in form.confirm_password.errors %}
+                <div class="message">{{ error }}</div>
+              {% endfor %}
+
+            {% for error in form.password.errors %}
+                <div class="message">{{ error }}</div>
+              {% endfor %}
+
+            <div class="form-group">
+                {{ form.first_name(class="form-input", placeholder="First name") }}
+            </div>
+            <div class="form-group">
+                {{ form.last_name(class="form-input", placeholder="Last name") }}
+            </div>
+            <div class="form-group">
+                {{ form.username(class="form-input", placeholder="Username") }}
+            </div>
+            <div class="form-group">
+                {{ form.email(class="form-input", placeholder="Email") }}
+            </div>
+
+            <div class="form-group password-group">
+              {{ form.password(class="form-input", placeholder="Enter your password", autocomplete="new-password") }}
+              <i class="fa-solid fa-eye-slash toggle-password"></i>
+            </div>
+
+            <div class="form-group password-group">
+              {{ form.confirm_password(class="form-input", placeholder="Confirm your password", autocomplete="new-password") }}
+              <i class="fa-solid fa-eye-slash toggle-password"></i>
+            </div>
+
+            {{ form.submit(class="submit-button", value="Create account") }}
+        </form>
+
+        <div class="login-link">
+            <a href="{{ url_for('routes.login') }}">Already have an account? Log in</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script nonce="{{ nonce }}">
+  document.querySelectorAll('.toggle-password').forEach(icon => {
+    icon.addEventListener('click', () => {
+      const input = icon.previousElementSibling;
+      const type = input.type === 'password' ? 'text' : 'password';
+      input.type = type;
+
+      icon.classList.toggle('fa-eye');
+      icon.classList.toggle('fa-eye-slash');
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QRCode Verification</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:regular,500,600,700%7COutfit:100,200,300,regular,500,600,700,800,900" media="all">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Outfit', sans-serif;
+
+      background-image: url('{{ url_for("static", filename="img/ipadblue.png") }}');
+      background-repeat: no-repeat;
+      background-position: bottom left;
+      background-size: 100% auto;
+
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-container {
+      width: 500px;
+      max-width: 90%;
+      padding: 40px;
+      border-radius: 15px;
+
+      background: rgba(255, 255, 255, 0.15);
+
+      border: 2px solid rgba(255, 255, 255, 0.3);
+
+      backdrop-filter: blur(10px);
+
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+
+      color: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-title {
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .form-input {
+      background: rgba(255, 255, 240, 0.45);
+      border: none;
+      border-radius: 9px;
+      height: 50px;
+      width: 100%;
+      color: #080c44;
+      padding: 0 15px;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .submit-button {
+      font-family: 'Outfit', sans-serif;
+      background: #080c44;
+      border: none;
+      border-radius: 9px;
+      height: 55px;
+      width: 100%;
+      font-size: 22px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .submit-button:hover {
+      background:  #09105f;
+    }
+
+    .message {
+      background: rgba(9, 16, 95, 0.75);
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      border-radius: 9px;
+      font-size: 18px;
+      text-align: center;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <div class="form-title">
+      Two-Factor Verification
+    </div>
+
+        {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="message">
+          {% for message in messages %}
+            {{ message }}
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      {{ form.token(class="form-input", placeholder="Enter the 6-digit code") }}
+      {{ form.submit(class="submit-button") }}
+    </form>
+
+  </div>
+</body>
+</html>
