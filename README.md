@@ -70,3 +70,14 @@ SECURITY NOTE: The application runs on a Self-Signed SSL certificate. Your brows
 
 ### 7. Graylog (SIEM) Setup
 Requires Docker or an external Graylog instance configured to listen on UDP (port 12201). The Graylog IP address must be configured in the extensions.py or .env file.
+
+
+## Interface
+<p align="center">
+  <img src="images/interface_main.png" alt="Interface" width="700">
+    <img src="images/interface_login.png" alt="Interface" width="700">
+    <img src="images/interface_registration.png" alt="Interface" width="700">
+    <img src="images/interface_courses.png" alt="Interface" width="700">
+</p>
+
+> 📌 **Note:** This is a non-commercial, educational project. The design layout and visual concepts are inspired by [Skillbox](https://skillbox.ru) for learning and practice purposes.
