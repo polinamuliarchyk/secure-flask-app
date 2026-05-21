@@ -74,10 +74,10 @@ Requires Docker or an external Graylog instance configured to listen on UDP (por
 
 ## Interface
 <p align="center">
-  <img src="images/interface_main.png" alt="Interface" width="700">
-    <img src="images/interface_login.png" alt="Interface" width="700">
-    <img src="images/interface_registration.png" alt="Interface" width="700">
-    <img src="images/interface_courses.png" alt="Interface" width="700">
+  <img src="app/static/img/interface_main.png" alt="Interface" width="700">
+    <img src="app/static/img/interface_login.png" alt="Interface login" width="700">
+    <img src="app/static/img/interface_registration.png" alt="Interface registration" width="700">
+    <img src="app/static/img/interface_courses.png" alt="Interface courses" width="700">
 </p>
 
 > 📌 **Note:** This is a non-commercial, educational project. The design layout and visual concepts are inspired by [Skillbox](https://skillbox.ru) for learning and practice purposes.
