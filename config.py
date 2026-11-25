@@ -2,9 +2,14 @@ import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
+def _require(name: str) -> str:
+    value = os.environ.get(name)
+    if not value:
+        raise RuntimeError(f"Missing required environment variable: {name}")
+    return value
 
 class Config:
-    SECRET_KEY = os.environ.get('SECRET_KEY', 'secret')
+    SECRET_KEY = _require('SECRET_KEY')
     SQLALCHEMY_DATABASE_URI = 'sqlite:///app.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
@@ -17,9 +22,8 @@ class Config:
 
     GRAYLOG_API_URL = os.getenv('GRAYLOG_API_URL')
     GRAYLOG_API_TOKEN = os.getenv('GRAYLOG_API_TOKEN')
-
-    ADMIN_USERNAME = os.environ.get('ADMIN_USERNAME', 'admin')
-    ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD', 'adminpassword')
-    ADMIN_EMAIL = os.environ.get('ADMIN_EMAIL', 'admin@example.com')
-
-    FERNET_KEY = os.getenv('FERNET_KEY')
+    
+    ADMIN_USERNAME = _require('ADMIN_USERNAME')
+    ADMIN_PASSWORD = _require('ADMIN_PASSWORD')
+    ADMIN_EMAIL = _require('ADMIN_EMAIL')
+    FERNET_KEY = _require('FERNET_KEY')
